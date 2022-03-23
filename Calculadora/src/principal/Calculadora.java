@@ -79,7 +79,7 @@ public class Calculadora {
 		LOGGER.addHandler(consoleHandler);
 		
 		try {
-			fileHandler = new FileHandler("./logOperaciones.html");
+			fileHandler = new FileHandler("./logs/logOperaciones.html");
 		} catch (IOException exception) {
 			LOGGER.log(Level.SEVERE, "Ocurrio un error en FileHandler.", exception);
 		}
