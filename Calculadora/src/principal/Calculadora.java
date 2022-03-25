@@ -1,10 +1,12 @@
 package principal;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.FileHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
+import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 import logs.FiltroLogSoloMultiplicar;
@@ -17,7 +19,14 @@ import operaciones.Operaciones;
 
 public class Calculadora {
 	private static final Logger LOGGER = Logger.getLogger(Calculadora.class.getName());
-
+	private static final LogManager logManager = LogManager.getLogManager();
+	static {
+		try {
+			logManager.readConfiguration(new FileInputStream("./logs/configLog.properties"));
+		} catch (IOException exception) {
+			LOGGER.log(Level.SEVERE, "Error al cargar la configuración", exception);
+		}
+	}
 	public static void main(String[] args) {
 		/**
 		 * Esta parte del programa es el main donde vamos a llamar a los objetos En el
@@ -25,7 +34,8 @@ public class Calculadora {
 		 * cuantas variables y una array de 2 posiciones El main contine tambien una
 		 * excepcion de tipo ArithmeticException
 		 */
-		configurarLog();
+		 
+		// configurarLog();
 
 		int resultado = 0;
 		String operacion = "";
@@ -65,7 +75,7 @@ public class Calculadora {
 
 		} while (menu.repetir());
 	}
-
+/*
 	public static void configurarLog() {
 	//	LogManager.getLogManager().reset();
 		
@@ -96,4 +106,6 @@ public class Calculadora {
 		fileHandler.setFilter(new FiltroLogSoloMultiplicar());
 		LOGGER.setLevel(Level.FINE);
 	}
+	*/
 }
+	
