@@ -5,10 +5,9 @@ import java.util.logging.ConsoleHandler;
 import java.util.logging.FileHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
-import java.util.logging.LogManager;
 import java.util.logging.Logger;
-import java.util.logging.XMLFormatter;
 
+import logs.FiltroLogSoloMultiplicar;
 import logs.FormatoHTML;
 /**
  * @author Hodei Axpe
@@ -93,6 +92,8 @@ public class Calculadora {
 		consoleHandler.setLevel(Level.WARNING);
 		fileHandler.setLevel(Level.FINE);
 
+		// Establecer filtro en fileHandler
+		fileHandler.setFilter(new FiltroLogSoloMultiplicar());
 		LOGGER.setLevel(Level.FINE);
 	}
 }
