@@ -9,8 +9,8 @@ import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
-import logs.FiltroLogSoloMultiplicar;
-import logs.FormatoHTML;
+import logs.FiltroLogSolo0;
+import logs.FormatoHTML2;
 /**
  * @author Hodei Axpe
  */
@@ -35,7 +35,7 @@ public class Calculadora {
 		 * excepcion de tipo ArithmeticException
 		 */
 		 
-		// configurarLog();
+		 configurarLog();
 
 		int resultado = 0;
 		String operacion = "";
@@ -66,20 +66,17 @@ public class Calculadora {
 				} else {
 					System.out.println("Operación no válida");
 				}
-				LOGGER.log(Level.FINE, "Operacion : " + operacion + " | operando 1: " + operandos[0] + " | operando 2: "
-						+ operandos[1] + " | Resultado: " + resultado);
-			} catch (ArithmeticException e) {
+				LOGGER.log(Level.FINE, "Operacion: " + operacion + " |operando1: " + operandos[0] + " |operando2: "
+						+ operandos[1] + " |Resultado: " + resultado);
+				} catch (ArithmeticException e) {
 				System.out.println("Operacion aritmetica no valida " + e.getMessage());
 				LOGGER.log(Level.WARNING, "Division entre cero.");
 			}
 
 		} while (menu.repetir());
 	}
-/*
+
 	public static void configurarLog() {
-	//	LogManager.getLogManager().reset();
-		
-		LOGGER.setUseParentHandlers(false);
 
 		Handler fileHandler = null;
 		Handler consoleHandler = new ConsoleHandler();
@@ -88,13 +85,13 @@ public class Calculadora {
 		LOGGER.addHandler(consoleHandler);
 		
 		try {
-			fileHandler = new FileHandler("./logs/logOperaciones.html");
+			fileHandler = new FileHandler("./logs/logOperacionesSolo0.html");
 		} catch (IOException exception) {
 			LOGGER.log(Level.SEVERE, "Ocurrio un error en FileHandler.", exception);
 		}
 
 		// Implementamos nuestro formateo de salida:
-		fileHandler.setFormatter(new FormatoHTML());
+		fileHandler.setFormatter(new FormatoHTML2());
 		
 		// Asignar handlers al objeto LOGGER
 		LOGGER.addHandler(fileHandler);
@@ -103,9 +100,9 @@ public class Calculadora {
 		fileHandler.setLevel(Level.FINE);
 
 		// Establecer filtro en fileHandler
-		fileHandler.setFilter(new FiltroLogSoloMultiplicar());
+		fileHandler.setFilter(new FiltroLogSolo0());
 		LOGGER.setLevel(Level.FINE);
 	}
-	*/
+	
 }
 	
